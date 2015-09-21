@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
-// var Game = require('game');
+var Game = require('./games');
 
 var userSchema = mongoose.Schema({
   userName: {
