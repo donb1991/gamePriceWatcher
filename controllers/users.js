@@ -10,7 +10,7 @@ app.get('/login', routerHelper.preventLoginSignup, function(req, res) {
   res.render('users/login');
 });
 
-app.get('/logout', function(req, res) {
+app.get('/logout', routerHelper.ensureLoggedIn, function(req, res) {
   req.logout();
   res.redirect('/');
 });

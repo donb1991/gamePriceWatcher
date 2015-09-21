@@ -1,9 +1,9 @@
 app.get('/', function(req, res) {
-  res.send('Home Page');
+  res.render('home');
 });
 
-//require game and user controllers
 require('./users');
+require('./games');
 
 app.get('*', function(req, res) {
   res.send(404);
