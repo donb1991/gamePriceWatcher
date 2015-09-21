@@ -5,6 +5,7 @@ var session = require('cookie-session');
 var ejs = require('ejs');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var db = require('./models');
 
 app.use(bodyParser);
 app.use(methodOverride('_method'));
