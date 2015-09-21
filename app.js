@@ -7,7 +7,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var db = require('./models');
 
-app.use(bodyParser);
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -16,6 +16,8 @@ app.use(session({
   secret: 'Its on sale',
   name: 'saleWatcher',
 }));
+
+require('./controllers');
 
 app.listen(3000, function() {
   console.log('http://localhost:3000');
