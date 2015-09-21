@@ -17,3 +17,5 @@ var loginHelper = function(req, res, next) {
 
   next();
 };
+
+module.exports = loginHelper;

@@ -5,6 +5,7 @@ var session = require('cookie-session');
 var ejs = require('ejs');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var loginHelper = require('./middleware/loginHelper');
 var db = require('./models');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,6 +17,7 @@ app.use(session({
   secret: 'Its on sale',
   name: 'saleWatcher',
 }));
+app.use(loginHelper);
 
 require('./controllers');
 
