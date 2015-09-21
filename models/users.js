@@ -32,7 +32,7 @@ userSchema.pre('save', function(next) {
     return next();
   }
 
-  return bcrypt.genSalt(SALT_WORK_FACTOR, function(err, slat) {
+  return bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) {
       return next(err);
     }
@@ -48,7 +48,7 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.static.authenticate = function(formData, next) {
+userSchema.statics.authenticate = function(formData, next) {
   this.findOne({
     userName: formData.userName,
   }, function(err, user) {
@@ -60,7 +60,7 @@ userSchema.static.authenticate = function(formData, next) {
   });
 };
 
-userSchema.method.checkPassword = function(password, next) {
+userSchema.methods.checkPassword = function(password, next) {
   var _this = this;
   bcrypt.compare(password, _this.password, function(err, isMatch) {
     if (isMatch) {

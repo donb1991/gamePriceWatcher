@@ -9,10 +9,10 @@ var loginHelper = function(req, res, next) {
     req.session.id = null;
   };
 
-  if (req.session.id === null) {
+  if (req.session.id == null) {
     res.locals.user = null;
   } else {
-    res.locals.user = user._id;
+    res.locals.user = req.session.id;
   }
 
   next();
