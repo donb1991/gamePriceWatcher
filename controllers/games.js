@@ -1,4 +1,5 @@
 var db = require('../models');
+var routerHelper = require('../middleware/routerHelper');
 
 app.post('/users/:userId/games', function(req, res) {
   db.Game.create(req.body, function(err, game) {
@@ -23,5 +24,11 @@ app.delete('/users/:userId/games/:id', function(req, res) {
       game.remove();
       res.send(game);
     }
+  });
+});
+
+app.get('/users/:userId/games', routerHelper.ensureLoggedIn, function(req, res) {
+  db.User.findById(req.params.userId).populate('games').exec(function(err, data) {
+    res.render('users/gamelist', data);
   });
 });

@@ -12,7 +12,7 @@ app.get('/login', routerHelper.preventLoginSignup, function(req, res) {
 
 app.get('/logout', routerHelper.ensureLoggedIn, function(req, res) {
   req.logout();
-  res.redirect('/');
+  res.render('users/login');
 });
 
 app.post('/signup', routerHelper.preventLoginSignup, function(req, res) {
@@ -31,17 +31,14 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
   db.User.authenticate(req.body.user, function(err, user) {
     if (err) {
       console.log(err);
-      res.redirect('/login');
+      res.render('/login');
     } else {
       req.login(user);
-      res.redirect('/');
+      res.render('users/gamelist');
     }
   });
 });
 
-app.get('/users/:id', routerHelper.ensureLoggedIn, function(req, res) {
-  // console.log(db.User);
-  db.User.findById(req.params.id).populate('games').exec(function(err, data) {
-    res.render('users/gamelist', data);
-  });
+app.get('/user/:id', routerHelper.ensureLoggedIn, function(req, res) {
+  res.render('users/search');
 });

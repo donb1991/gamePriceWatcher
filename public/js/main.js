@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   var $search = $('.search');
   var $results = $('.results');
+  var $content = $('#content');
 
   $search.on('click', 'button', searchGames);
   $results.on('click', 'button', addToUsersList);
@@ -85,21 +86,21 @@ $(document).ready(function() {
     $('<input class="price" type=hidden value="' + game.price + '"></input>').appendTo($form);
     $('<input class="publisher" type=hidden value="' + game.publisher + '"></input>').appendTo($form);
     $('<input class="thumb" type=hidden value="' + game.thumb + '"></input>').appendTo($form);
-    $form.children('button').attr('disabled', false);
+    $form.find('button').attr('disabled', false);
   }
 
   function addToUsersList(e) {
     e.preventDefault();
     var userId = $results.attr('class').split(' ')[1];
-    $gameForm = ($(e.target).parent());
+    $gameForm = ($(e.target).closest('form'));
     data = {
-      gameId:  $gameForm.children('.gameId').val(),
-      title: $gameForm.children('.title').val(),
-      retailer: $gameForm.children('.retailer').val(),
-      price: $gameForm.children('.price').val(),
-      publisher: $gameForm.children('.publisher').val(),
-      thumb: $gameForm.children('.thumb').val(),
-      userPrice: $gameForm.children('.userPrice').val(),
+      gameId:  $gameForm.find('.gameId').val(),
+      title: $gameForm.find('.title').val(),
+      retailer: $gameForm.find('.retailer').val(),
+      price: $gameForm.find('.price').val(),
+      publisher: $gameForm.find('.publisher').val(),
+      thumb: $gameForm.find('.thumb').val(),
+      userPrice: $gameForm.find('.userPrice').val(),
     };
     $.ajax({
       url: 'http://localhost:3000/users/' + userId + '/games',
@@ -108,4 +109,33 @@ $(document).ready(function() {
     });
   }
 
+  $('a').on('click', function(e) {
+    e.preventDefault();
+    var url = 'http://localhost:3000' + $(e.target).attr('href');
+    $.ajax({
+      url: url,
+      method: 'GET',
+    }).done(function(data) {
+      console.log(data);
+      $content.html(data);
+    });
+  });
+
+  $('.login').on('click', 'button', function(e) {
+    e.preventDefault();
+    $form = $(e.target).closest('form');
+    console.log($form);
+    data = {
+      userName: $form.children('.userName').val(),
+      password: $form.children('.password').val(),
+    };
+    $.ajax({
+      url: 'http://localhost:3000/login',
+      method: 'GET',
+      data: data,
+    }).done(function(data) {
+      console.log(data);
+      $content.html(data);
+    });
+  });
 });

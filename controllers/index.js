@@ -1,6 +1,6 @@
 var routerHelper = require('../middleware/routerHelper');
 
-app.get('/', routerHelper.ensureLoggedIn, function(req, res) {
+app.get('/', function(req, res) {
   res.render('home');
 });
 

@@ -49,6 +49,7 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.statics.authenticate = function(formData, next) {
+  console.log(formData);
   this.findOne({
     userName: formData.userName,
   }, function(err, user) {
