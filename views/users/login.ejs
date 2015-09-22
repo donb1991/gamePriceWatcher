@@ -1,11 +1,14 @@
+  <% include ../partials/header %>
 
   <div class='row'>
     <% include ../partials/randomGame %>
 
     <form class='login columns right large-5' action="/login" method="post">
-      <label>Username<input type="text" class="userName" value=""></label>
-      <label>Password <input type="text" class="password" value=""></label>
+      <label>Username<input type="text" name="user[userName]" value=""></label>
+      <label>Password <input type="text" name="user[password]" value=""></label>
       <button type="sumbit" name="button">Log In</button>
       <a href="/signup">Don't have an account? Sign up</a>
     </form>
   </div>
+  
+<% include ../partials/footer %>

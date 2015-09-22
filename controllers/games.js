@@ -29,6 +29,7 @@ app.delete('/users/:userId/games/:id', function(req, res) {
 
 app.get('/users/:userId/games', routerHelper.ensureLoggedIn, function(req, res) {
   db.User.findById(req.params.userId).populate('games').exec(function(err, data) {
+    // res.send(data);
     res.render('users/gamelist', data);
   });
 });

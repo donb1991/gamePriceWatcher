@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Game Watcher</title>
-    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="/js/main.js"></script>
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.js"></script>
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
+
   <% include partials/header %>
-    <div id='content'>
-      <% if (locals.user == null) { %>
-        <% include users/login %>
-      <% } else { %>
-        <% include users/search %>
-      <% } %>
-      <div class="results <%=locals.user%> row">
-      </div>
-    </div>
+
   <% include partials/footer %>
-  </body>
-</html>

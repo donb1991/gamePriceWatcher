@@ -109,33 +109,33 @@ $(document).ready(function() {
     });
   }
 
-  $('a').on('click', function(e) {
-    e.preventDefault();
-    var url = 'http://localhost:3000' + $(e.target).attr('href');
-    $.ajax({
-      url: url,
-      method: 'GET',
-    }).done(function(data) {
-      console.log(data);
-      $content.html(data);
-    });
-  });
-
-  $('.login').on('click', 'button', function(e) {
-    e.preventDefault();
-    $form = $(e.target).closest('form');
-    console.log($form);
-    data = {
-      userName: $form.children('.userName').val(),
-      password: $form.children('.password').val(),
-    };
-    $.ajax({
-      url: 'http://localhost:3000/login',
-      method: 'GET',
-      data: data,
-    }).done(function(data) {
-      console.log(data);
-      $content.html(data);
-    });
-  });
+  // $('a').on('click', function(e) {
+  //   e.preventDefault();
+  //   var url = 'http://localhost:3000' + $(e.target).attr('href');
+  //   $.ajax({
+  //     url: url,
+  //     method: 'GET',
+  //   }).done(function(data) {
+  //     console.log(data);
+  //     $content.html(data);
+  //   });
+  // });
+  //
+  // $('.login').on('click', 'button', function(e) {
+  //   e.preventDefault();
+  //   $form = $(e.target).closest('form');
+  //   console.log($form);
+  //   data = {
+  //     userName: $form.children('.userName').val(),
+  //     password: $form.children('.password').val(),
+  //   };
+  //   $.ajax({
+  //     url: 'http://localhost:3000/login',
+  //     method: 'GET',
+  //     data: data,
+  //   }).done(function(data) {
+  //     console.log(data);
+  //     $content.html(data);
+  //   });
+  // });
 });
