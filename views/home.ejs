@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="js/main.js"></script>
-  </head>
-  <body>
+<% include partials/header %>
+
     <form class="search" action="#" method="get">
-      <input type="text" name="game[gameId]" value="">
-      <button type="sumbit" name="button">Search</button>
+      <div class="row collapse">
+        <div class="columns large-10">
+          <input type="text" name="game[gameId]" placeholder="search" value="">
+        </div>
+        <div class="columns large-2">
+          <button class='button postfix' type="sumbit" name="button">Search</button>
+        </div>
+      </div>
     </form>
-    <div class="results <%=locals.user%>">
+
+    <div class="results <%=locals.user%> row">
 
     </div>
-  </body>
-</html>
+<% include partials/footer %>

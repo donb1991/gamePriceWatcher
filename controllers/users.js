@@ -38,3 +38,10 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
     }
   });
 });
+
+app.get('/users/:id', routerHelper.ensureLoggedIn, function(req, res) {
+  // console.log(db.User);
+  db.User.findById(req.params.id).populate('games').exec(function(err, data) {
+    res.render('users/gamelist', data);
+  });
+});

@@ -1,0 +1,11 @@
+<% include ../partials/header %>
+
+  <ul>
+    <% games.forEach(function(game) { %>
+      <% if (game.userPrice == null || game.userPrice == undefined || game.userPrice < game.price) { %>
+        <li><%= game.title %></li>
+      <% } %>
+    <% }); %>
+  </ul>
+
+<% include ../partials/footer %>
