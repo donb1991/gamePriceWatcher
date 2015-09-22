@@ -53,7 +53,7 @@ userSchema.statics.authenticate = function(formData, next) {
     userName: formData.userName,
   }, function(err, user) {
     if (user === null) {
-      callback('Invaild username or password');
+      next('Invaild username or password');
     } else {
       user.checkPassword(formData.password, next);
     }

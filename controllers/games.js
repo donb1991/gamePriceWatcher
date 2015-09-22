@@ -1,8 +1,6 @@
 var db = require('../models');
 
 app.post('/users/:userId/games', function(req, res) {
-  console.log(req.body);
-
   db.Game.create(req.body, function(err, game) {
     if (err) {
       console.log(err);
@@ -11,10 +9,9 @@ app.post('/users/:userId/games', function(req, res) {
         user.games.push(game);
         user.save();
         game.save();
+        res.send(user);
       });
     }
-
-    res.redirect('/');
   });
 });
 
@@ -22,9 +19,9 @@ app.delete('/users/:userId/games/:id', function(req, res) {
   db.Game.findByIdAndRemove(req.params.id, function(err, game) {
     if (err) {
       console.log(err);
+    } else {
+      game.remove();
+      res.send(game);
     }
-
-    game.remove();
-    res.redirect('/');
   });
 });
