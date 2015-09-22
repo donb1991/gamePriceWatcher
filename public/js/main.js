@@ -77,7 +77,6 @@ $(document).ready(function() {
     $div.append('<span class="title">Retailer: ' + game.retailer + '</span> <br />');
     $div.append('<span class="title">Price: ' + game.price + '</span> <br />');
     $div.append('<span class="title">Publisher: ' + game.publisher + '</span> <br />');
-    console.log($div.html());
     $div.prependTo($result);
     $img.prependTo($result);
     $('<input class="title" type=hidden value="' + game.title + '"></input>').appendTo($form);

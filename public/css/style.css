@@ -6,3 +6,17 @@
   margin-bottom: 10px;
   height: 150px;
 }
+
+.randomGameInfo {
+  text-align: left;
+  padding-top: 50px;
+  line-height: 3em;
+}
+
+.login {
+  padding-top: 50px;
+}
+
+.signup {
+  padding-top: 25px;
+}
