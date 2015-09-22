@@ -20,7 +20,7 @@ $(document).ready(function() {
     $results.html('');
     results.forEach(function(result) {
       var $result = $('<span> </span>');
-      var $form = $('<form action=\'#\' method=\'get\'><button type="sumbit" name="button">Add</button></form>');
+      var $form = $('<form action=\'#\' method=\'get\'><button type="sumbit" name="button" disabled=true>Add</button></form>');
       $result.text(result.external);
       $form.appendTo($result);
       $result.appendTo($results);
@@ -47,6 +47,7 @@ $(document).ready(function() {
     $('<input class="price" type=hidden value="' + game.price + '"></input>').appendTo($form);
     $('<input class="publisher" type=hidden value="' + game.publisher + '"></input>').appendTo($form);
     $('<input class="thumb" type=hidden value="' + game.thumb + '"></input>').appendTo($form);
+    $form.children('button').attr('disabled', false);
   }
 
   function getRetailer(game, storeId, $form) {
