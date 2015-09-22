@@ -5,6 +5,7 @@ var gameSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  title: String,
   publiser: String,
   retailer: String,
   price: Number,

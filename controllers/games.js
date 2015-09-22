@@ -1,19 +1,30 @@
 var db = require('../models');
 
-app.get('/users/:user_id/games', function(req, res) {
-  res.send('test');
-});
-
-app.post('/users/:user_id/games', function(req, res) {
+app.post('/users/:userId/games', function(req, res) {
   console.log(req.body);
 
-  db.Game.create(req.body, function(err, data) {
+  db.Game.create(req.body, function(err, game) {
     if (err) {
       console.log(err);
     } else {
-      console.log(data);
+      db.User.findById(req.params.userId, function(err, user) {
+        user.games.push(game);
+        user.save();
+        game.save();
+      });
     }
 
+    res.redirect('/');
+  });
+});
+
+app.delete('/users/:userId/games/:id', function(req, res) {
+  db.Game.findByIdAndRemove(req.params.id, function(err, game) {
+    if (err) {
+      console.log(err);
+    }
+
+    game.remove();
     res.redirect('/');
   });
 });

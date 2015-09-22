@@ -7,12 +7,12 @@
     <script src="js/main.js"></script>
   </head>
   <body>
-    <form class="search" action="#" method="post">
+    <form class="search" action="#" method="get">
       <input type="text" name="game[gameId]" value="">
       <button type="sumbit" name="button">Search</button>
     </form>
-    <div class="results">
-      
+    <div class="results <%=locals.user%>">
+
     </div>
   </body>
 </html>
