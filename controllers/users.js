@@ -32,9 +32,10 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
   db.User.authenticate(req.body.user, function(err, user) {
     if (err) {
       console.log(err);
-      res.render('/login');
+      res.redirect('/login');
     } else {
       req.login(user);
+      req.updateGames();
       res.redirect('users/' + user._id + '/games');
     }
   });

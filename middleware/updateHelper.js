@@ -4,21 +4,20 @@ var request = require('request');
 var updateHelper = function(req, res, next) {
 
   req.updateGames = function() {
-    db.User.findById(req.session.id).populate('games').exec(function(err, user) {
-      user.games.forEach(function(game) {
+    db.UserGame.find({user: req.session.id}).populate('game').exec(function(err, usergames) {
+      usergames.forEach(function(usergame) {
         var updatedGameInfo = {
-          _id: game._id,
-          gameId: game.gameId,
-          title: game.title,
-          userPrice: game.userPrice,
+          _id: usergame.game._id,
+          gameId: usergame.game.gameId,
+          title: usergame.game.title,
         };
         var loweistPrice = Infinity;
         var cheapistDeal = {};
         var storeId;
-        request.get('http://www.cheapshark.com/api/1.0/games?ids=' + game.gameId, function(err, response, body) {
+        request.get('http://www.cheapshark.com/api/1.0/games?ids=' + usergame.game.gameId, function(err, response, body) {
           jsonBody = JSON.parse(body);
-          updatedGameInfo.thumb = jsonBody[game.gameId].info.thumb;
-          jsonBody[game.gameId].deals.forEach(function(deal) {
+          updatedGameInfo.thumb = jsonBody[usergame.game.gameId].info.thumb;
+          jsonBody[usergame.game.gameId].deals.forEach(function(deal) {
             if (deal.price < loweistPrice) {
               loweistPrice = deal.price;
               cheapistGame = deal;
@@ -38,6 +37,8 @@ var updateHelper = function(req, res, next) {
             db.Game.findByIdAndUpdate(updatedGameInfo._id, updatedGameInfo, function(err, game) {
               if (err) {
                 console.log(err);
+              } else {
+                console.log(game);
               }
             });
           });
