@@ -116,14 +116,19 @@ $(document).ready(function() {
   }
 
   function updateGamePrice(e) {
-    userPrice = $(e.target.form).find('.userPrice').val();
+    userPrice = Number($(e.target.form).find('.userPrice').val());
     url =  window.location.href + '/' + $(e.target.form).attr('class');
-    console.log(userPrice);
     $.ajax({
       url: url,
       method: 'PUT',
-      data: {userPrice: Number(userPrice)},
+      data: {userPrice: userPrice},
     }).done(function(data) {
+      if (data.userPrice > userPrice) {
+        $(e.target).closest('.game').addClass('filter');
+      } else {
+        $(e.target).closest('.game').removeClass('filter');
+
+      }
       console.log(data);
     });
   }
@@ -141,12 +146,16 @@ $(document).ready(function() {
 
   function filter(e) {
     e.preventDefault();
-    console.log($(e.target).text());
     if ($(e.target).text() === 'All') {
       $('.filter').show();
     } else {
       $('.filter').hide();
     }
+  }
+
+  function updateData(e) {
+    e.preventDefault();
+
   }
 
   // $('a').on('click', function(e) {

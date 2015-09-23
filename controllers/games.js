@@ -31,6 +31,8 @@ app.put('/users/:userId/games/:id', function(req, res) {
   db.Game.findByIdAndUpdate(req.params.id, req.body, function(err, game) {
     if (err) {
       console.log(err);
+    } else {
+      res.send(game);
     }
   });
 });
