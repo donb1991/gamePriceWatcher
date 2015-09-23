@@ -35,12 +35,11 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
       res.render('/login');
     } else {
       req.login(user);
-      req.updateGames();
       res.redirect('users/' + user._id + '/games');
     }
   });
 });
 
-app.get('/user/:id', routerHelper.ensureLoggedIn, function(req, res) {
+app.get('/users/:id', routerHelper.ensureLoggedIn, function(req, res) {
   res.render('users/search');
 });

@@ -17,7 +17,7 @@
           <h1 class="columns large-3">Logo</h1>
           <nav class='columns large-4'>
             <% if (locals.user != null) { %>
-              <a class="columns large-4" href="/user/<%= locals.user %>">Search</a>
+              <a class="columns large-4" href="/users/<%= locals.user %>">Search</a>
               <a class="columns large-4" href="/users/<%= locals.user %>/games">Your List</a>
               <a class="columns large-4" href="/logout">Logout</a>
             <% } else { %>

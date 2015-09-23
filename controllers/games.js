@@ -7,10 +7,11 @@ app.post('/users/:userId/games', function(req, res) {
       console.log(err);
     } else {
       db.User.findById(req.params.userId, function(err, user) {
-        user.games.push(game);
-        user.save();
-        game.save();
-        res.send(user);
+        db.UserGames.create({user: user._id, game: game._id, userPrice: req.body.userPrice}, function(err, userGame) {
+          user.games.push(userGame);
+          user.save();
+          res.send(user);
+        });
       });
     }
   });
@@ -38,8 +39,7 @@ app.put('/users/:userId/games/:id', function(req, res) {
 });
 
 app.get('/users/:userId/games', routerHelper.ensureLoggedIn, function(req, res) {
-  db.User.findById(req.params.userId).populate('games').exec(function(err, data) {
-    // res.send(data);
-    res.render('users/gamelist', data);
+  db.UserGames.find({user: req.params.userId}).populate('game').exec(function(err, userGames) {
+    res.render('users/gamelist', {games: userGames});
   });
 });

@@ -127,9 +127,7 @@ $(document).ready(function() {
         $(e.target).closest('.game').addClass('filter');
       } else {
         $(e.target).closest('.game').removeClass('filter');
-
       }
-      console.log(data);
     });
   }
 
