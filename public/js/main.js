@@ -3,10 +3,13 @@ $(document).ready(function() {
   var $search = $('.search');
   var $results = $('.results');
   var $content = $('#content');
+  var $update = $('.update');
+  var $delete = $('.delete');
 
   $search.on('click', 'button', searchGames);
   $results.on('click', 'button', addToUsersList);
-  $('.update').on('click', updateGamePrice);
+  $update.on('click', updateGamePrice);
+  $delete.on('click', deleteGame);
 
   function searchGames(e) {
     e.preventDefault();
@@ -120,6 +123,14 @@ $(document).ready(function() {
       data: {userPrice: Number(userPrice)},
     }).done(function(data) {
       console.log(data);
+    });
+  }
+
+  function deleteGame(e) {
+    url =  window.location.href + '/' + $(e.target.form).attr('class');
+    $.ajax({
+      url: url,
+      method: 'delete',
     });
   }
 
