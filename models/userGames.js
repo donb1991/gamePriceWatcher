@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var db = require('./index');
 
-var userGamesSchema = mongoose.Schema({
+var userGameSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -13,6 +13,6 @@ var userGamesSchema = mongoose.Schema({
   userPrice: Number,
 });
 
-var UserGames = mongoose.model('UserGames', userGamesSchema);
+var UserGame = mongoose.model('UserGame', userGameSchema);
 
-module.exports = UserGames;
+module.exports = UserGame;
