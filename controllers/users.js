@@ -1,6 +1,7 @@
 var db = require('../models');
 var bcrypt = require('bcrypt');
 var routerHelper = require('../middleware/routerHelper');
+var updateHelper = require('../middleware/updateHelper');
 
 app.get('/signup', routerHelper.preventLoginSignup, function(req, res) {
   res.render('users/signup');
@@ -12,7 +13,7 @@ app.get('/login', routerHelper.preventLoginSignup, function(req, res) {
 
 app.get('/logout', routerHelper.ensureLoggedIn, function(req, res) {
   req.logout();
-  res.render('users/login');
+  res.redirect('/login');
 });
 
 app.post('/signup', routerHelper.preventLoginSignup, function(req, res) {
@@ -34,6 +35,7 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
       res.render('/login');
     } else {
       req.login(user);
+      req.updateGames();
       res.redirect('users/' + user._id + '/games');
     }
   });

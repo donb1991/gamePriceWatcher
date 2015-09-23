@@ -6,6 +6,7 @@ var ejs = require('ejs');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var loginHelper = require('./middleware/loginHelper');
+var updateHelper = require('./middleware/updateHelper');
 var db = require('./models');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -18,6 +19,7 @@ app.use(session({
   name: 'saleWatcher',
 }));
 app.use(loginHelper);
+app.use(updateHelper);
 
 require('./controllers');
 

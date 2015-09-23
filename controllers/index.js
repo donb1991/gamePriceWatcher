@@ -1,7 +1,7 @@
 var routerHelper = require('../middleware/routerHelper');
 
-app.get('/', function(req, res) {
-  res.render('home');
+app.get('/', routerHelper.ensureLoggedIn, function(req, res) {
+  res.redirect('users/' + req.session.id + '/games');
 });
 
 require('./users');
