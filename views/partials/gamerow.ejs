@@ -1,0 +1,22 @@
+<img class='coverArt columns large-4'src="<%= game.thumb %>" alt="coverArt" />
+<div class="gameInfo columns large-4">
+  <span class="title">Title: <%= game.title %></span> <br />
+  <span class="retailer">Retailer: <%= game.retailer%></span> <br />
+  <span class="price">Price: <%= game.price %></span> <br />
+  <span class="publisher">Publisher: <%= game.publisher %></span> <br />
+</div>
+<div class="columns large-4">
+  <form class="<%=game._id%>" action="#" method="get">
+    <div class="row collapse">
+      <div class="columns large-8">
+        <input class='userPrice' type="number" name="name" value="<%= game.userPrice %>">
+      </div>
+      <div class="columns large-2">
+        <input class='update button postfix expand' type="button" name="button" value='edit' />
+      </div>
+      <div class="columns large-2">
+        <input class='delete button postfix expand alert' type="button" name="button" value='X' />
+      </div>
+    </div>
+  </form>
+</div>

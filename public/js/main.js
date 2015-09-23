@@ -5,11 +5,13 @@ $(document).ready(function() {
   var $content = $('#content');
   var $update = $('.update');
   var $delete = $('.delete');
+  var $filterLink = $('.filterLink');
 
   $search.on('click', 'button', searchGames);
   $results.on('click', 'button', addToUsersList);
   $update.on('click', updateGamePrice);
   $delete.on('click', deleteGame);
+  $filterLink.on('click', filter);
 
   function searchGames(e) {
     e.preventDefault();
@@ -127,11 +129,24 @@ $(document).ready(function() {
   }
 
   function deleteGame(e) {
+
     url =  window.location.href + '/' + $(e.target.form).attr('class');
     $.ajax({
       url: url,
       method: 'delete',
+    }).done(function(data) {
+      $(e.target).closest('.game').remove();
     });
+  }
+
+  function filter(e) {
+    e.preventDefault();
+    console.log($(e.target).text());
+    if ($(e.target).text() === 'All') {
+      $('.filter').show();
+    } else {
+      $('.filter').hide();
+    }
   }
 
   // $('a').on('click', function(e) {
