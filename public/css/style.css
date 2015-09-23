@@ -2,8 +2,21 @@
   max-height: 150px;
 }
 
+header {
+  background-color: #808080;
+  border-bottom: 3px solid black;
+}
+
+nav {
+  top: 50px;
+}
+
+nav a {
+  
+}
+
 .game {
-  margin-bottom: 10px;
+  margin-top: 10px;
   height: 150px;
 }
 
@@ -19,4 +32,8 @@
 
 .signup {
   padding-top: 25px;
+}
+
+.gamelist {
+  border: 10px solid black;
 }

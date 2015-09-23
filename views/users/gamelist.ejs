@@ -1,34 +1,38 @@
 <% include ../partials/header %>
-
-    <div class="row">
-      <% games.forEach(function(game) { %>
-        <% if (game.userPrice == null || game.userPrice == undefined || game.userPrice > game.price) { %>
-          <div class="game columns large-12">
-            <img class='coverArt columns large-4'src="<%= game.thumb %>" alt="coverArt" />
-            <div class="gameInfo columns large-4">
-              <span class="title">Title: <%= game.title %></span> <br />
-              <span class="retailer">Retailer: <%= game.retailer%></span> <br />
-              <span class="price">Price: <%= game.price %></span> <br />
-              <span class="publisher">Publisher: <%= game.publisher %></span> <br />
-            </div>
-            <div class="columns large-4">
-              <form class="" action="#" method="get">
-                <div class="row collapse">
-                  <div class="columns large-8">
-                    <input type="number" name="name" value="<%= game.userPrice %>">
-                  </div>
-                  <div class="columns large-3">
-                    <input class='button postfix' type="button" name="button" value='edit' />
-                  </div>
-                  <div class="columns large-1">
-                    <input class='button postfix alert' type="button" name="button" value='X' />
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        <% } %>
-      <% }); %>
+  <div class="row">
+    <div class="columns large-3 right">
+      <span><a href="#">All</a> / <a href="#">Filtered</a></span>
     </div>
+  </div>
+  <div class="row gamelist">
+    <% games.forEach(function(game) { %>
+      <% if (game.userPrice == null || game.userPrice == undefined || game.userPrice > game.price) { %>
+        <div class="game columns large-12">
+          <img class='coverArt columns large-4'src="<%= game.thumb %>" alt="coverArt" />
+          <div class="gameInfo columns large-4">
+            <span class="title">Title: <%= game.title %></span> <br />
+            <span class="retailer">Retailer: <%= game.retailer%></span> <br />
+            <span class="price">Price: <%= game.price %></span> <br />
+            <span class="publisher">Publisher: <%= game.publisher %></span> <br />
+          </div>
+          <div class="columns large-4">
+            <form class="<%=game._id%>" action="#" method="get">
+              <div class="row collapse">
+                <div class="columns large-8">
+                  <input class='userPrice' type="number" name="name" value="<%= game.userPrice %>">
+                </div>
+                <div class="columns large-2">
+                  <input class='update button postfix expand' type="button" name="button" value='edit' />
+                </div>
+                <div class="columns large-2">
+                  <input class='delete button postfix expand alert' type="button" name="button" value='X' />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
 
 <% include ../partials/footer %>

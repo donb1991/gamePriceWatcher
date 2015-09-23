@@ -6,6 +6,7 @@ $(document).ready(function() {
 
   $search.on('click', 'button', searchGames);
   $results.on('click', 'button', addToUsersList);
+  $('.update').on('click', updateGamePrice);
 
   function searchGames(e) {
     e.preventDefault();
@@ -106,6 +107,19 @@ $(document).ready(function() {
       url: 'http://localhost:3000/users/' + userId + '/games',
       method: 'POST',
       data: data,
+    });
+  }
+
+  function updateGamePrice(e) {
+    userPrice = $(e.target.form).find('.userPrice').val();
+    url =  window.location.href + '/' + $(e.target.form).attr('class');
+    console.log(userPrice);
+    $.ajax({
+      url: url,
+      method: 'PUT',
+      data: {userPrice: Number(userPrice)},
+    }).done(function(data) {
+      console.log(data);
     });
   }
 
