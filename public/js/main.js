@@ -109,7 +109,7 @@ $(document).ready(function() {
       userPrice: $gameForm.find('.userPrice').val(),
     };
     $.ajax({
-      url: 'http://localhost:3000/users/' + userId + '/games',
+      url: 'http://localhost:3000/users/' + userId + '/usergames',
       method: 'POST',
       data: data,
     });

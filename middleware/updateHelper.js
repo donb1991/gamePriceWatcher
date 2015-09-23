@@ -37,8 +37,6 @@ var updateHelper = function(req, res, next) {
             db.Game.findByIdAndUpdate(updatedGameInfo._id, updatedGameInfo, function(err, game) {
               if (err) {
                 console.log(err);
-              } else {
-                console.log(game);
               }
             });
           });

@@ -1,7 +1,7 @@
 var db = require('../models');
 var routerHelper = require('../middleware/routerHelper');
 
-app.post('/users/:userId/games', function(req, res) {
+app.post('/users/:userId/usergames', function(req, res) {
   db.Game.create(req.body, function(err, game) {
     if (err) {
       console.log(err);
@@ -17,7 +17,7 @@ app.post('/users/:userId/games', function(req, res) {
   });
 });
 
-app.delete('/users/:userId/games/:id', function(req, res) {
+app.delete('/users/:userId/usergames/:id', function(req, res) {
   db.UserGame.findByIdAndRemove(req.params.id, function(err, game) {
     if (err) {
       console.log(err);
@@ -28,7 +28,7 @@ app.delete('/users/:userId/games/:id', function(req, res) {
   });
 });
 
-app.put('/users/:userId/games/:id', function(req, res) {
+app.put('/users/:userId/usergames/:id', function(req, res) {
   db.UserGame.findByIdAndUpdate(req.params.id, req.body, function(err, game) {
     if (err) {
       console.log(err);
@@ -38,7 +38,7 @@ app.put('/users/:userId/games/:id', function(req, res) {
   });
 });
 
-app.get('/users/:userId/games', routerHelper.ensureLoggedIn, function(req, res) {
+app.get('/users/:userId/usergames', routerHelper.ensureLoggedIn, function(req, res) {
   db.UserGame.find({user: req.params.userId}).populate('game').exec(function(err, userGame) {
     res.render('users/gamelist', {games: userGame});
   });

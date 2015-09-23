@@ -36,7 +36,7 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
     } else {
       req.login(user);
       req.updateGames();
-      res.redirect('users/' + user._id + '/games');
+      res.redirect('users/' + user._id + '/usergames');
     }
   });
 });
