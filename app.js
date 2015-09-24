@@ -23,6 +23,6 @@ app.use(updateHelper);
 
 require('./controllers');
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log('http://localhost:3000');
 });
