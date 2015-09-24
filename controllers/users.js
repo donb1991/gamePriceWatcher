@@ -9,10 +9,6 @@ app.get('/signup', routerHelper.preventLoginSignup, randomGame.getRandomGame, fu
 });
 
 app.get('/login', routerHelper.preventLoginSignup, randomGame.getRandomGame, function(req, res) {
-  // var game = {};
-  // req.randomGame(game);
-  // console.log(game);
-
   res.render('users/login');
 });
 
@@ -39,6 +35,7 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
       console.log(err);
       res.redirect('/login');
     } else {
+      console.log(err, user);
       req.login(user);
       req.updateGames();
       res.redirect('users/' + user._id + '/usergames');

@@ -52,7 +52,7 @@ userSchema.statics.authenticate = function(formData, next) {
   this.findOne({
     userName: formData.userName,
   }, function(err, user) {
-    if (user === null) {
+    if (err) {
       next('Invaild username or password');
     } else {
       user.checkPassword(formData.password, next);
@@ -66,7 +66,7 @@ userSchema.methods.checkPassword = function(password, next) {
     if (isMatch) {
       next(null, _this);
     } else {
-      next(err, null);
+      next('No match', null);
     }
   });
 };
