@@ -25,9 +25,9 @@ nav a {
 }
 
 .game {
-  margin-top: 10px;
+  margin-bottom: 10px;
   height: 150px;
-  
+  box-shadow: -1px 1px 10px black;
 }
 
 .randomGameInfo {
