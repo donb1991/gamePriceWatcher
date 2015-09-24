@@ -31,25 +31,25 @@ $(document).ready(function() {
   function renderResults(results) {
     $results.html('');
     results.forEach(function(result) {
-      var $row = $('<div class=\'row\'></div>');
-      var $column = $('<div class=\'game columns large-12\'></div>');
-      var $result = $('<section> </section>');
-      var $form = $('<form  action=\'#\' method=\'get\'> ' +
-        '<div class=\'right columns large-4\'>' +
+      var $row = $('<div class=\'row \'></div>');
+      var $column = $('<div class=\'columns large-12\'></div>');
+      var $result = $('<div class=\'game\'> </div>');
+      var $form = $('<div class=\'right columns large-4 vcenter\'> ' +
+        '<form class=\'\'action=\'#\' method=\'get\'>' +
           '<div class=\'row collapse\'>' +
-            '<div class=\'columns large-11\'>' +
+            '<div class=\'columns large-11 \'>' +
               '<input type=\'Number\'class=\'userPrice\' placeholder=\'Your price\'></input>' +
             '</div>' +
             '<div class=\'columns large-1\'>' +
-              '<button class=\'button postfix success\' type="sumbit" name="button" disabled=true>+</button>' +
+              '<button class=\'button postfix success expand\' type="sumbit" name="button" disabled=true>+</button>' +
             '</div>' +
           '</div>' +
-        '</div></form>');
+        '</form></div>');
 
       $form.appendTo($result);
       $result.appendTo($column);
-      $column.appendTo($results);
-      $row.appendTo($column);
+      $column.appendTo($row);
+      $row.appendTo($results);
 
       $.ajax({
         url: 'https://www.cheapshark.com/api/1.0/deals?id=' + result.cheapestDealID,
@@ -82,8 +82,8 @@ $(document).ready(function() {
   }
 
   function addHiddenGameData(game, $result) {
-    var $img = $('<img class="coverArt columns large-3" src="' + game.thumb + '" alt="' + game.title + ' Cover Art" />');
-    var $div = $('<div class="columns large-5"> </div>');
+    var $img = $('<img class="coverArt columns large-2 vcenter" src="' + game.thumb + '" alt="' + game.title + ' Cover Art" />');
+    var $div = $('<div class="columns large-5 vcenter"> </div>');
     var $form = $result.children('form');
     $div.append('<span class="title">Title: ' + game.title + '</span><br />');
     $div.append('<span class="title">Retailer: ' + game.retailer + '</span> <br />');

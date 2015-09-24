@@ -45,6 +45,6 @@ app.put('/users/:userId/usergames/:id', function(req, res) {
 
 app.get('/users/:userId/usergames', routerHelper.ensureLoggedIn, function(req, res) {
   db.UserGame.find({user: req.params.userId}).populate('game').exec(function(err, userGame) {
-    res.render('users/gamelist', {games: userGame});
+    res.render('games/gamelist', {games: userGame});
   });
 });
