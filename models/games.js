@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var findOrCreate = require('mongoose-findorcreate');
 var User = require('./users');
 var db = require('./index');
 
@@ -13,6 +14,8 @@ var gameSchema = mongoose.Schema({
   price: Number,
   thumb: String,
 });
+
+gameSchema.plugin(findOrCreate);
 
 // gameSchema.pre('remove', function(next) {
 //   db.User.findOneAndUpdate({games: {$in: [this._id]}}, {$pull: {games: this._id}}, function(err, user) {
