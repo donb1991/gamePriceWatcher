@@ -2,8 +2,8 @@
   <div class="row">
     <% include ../partials/randomGame %>
     <form class='signup columns right large-5'action="/signup" method="post">
-      <label class="userNameLabel">Username <input class='userName' type="text" name="user[userName]" value=""></label><small class='error'>Invaild Username</small>
-      <label class="passwordNameLabel">Password <input class='password' type="password" name="user[password]" value=""></label><small class='error'>Password do not Match</small>
+      <label class="userNameLabel">Username <input class='userName' type="text" name="user[userName]" value=""></label>
+      <label class="passwordNameLabel">Password <input class='password' type="password" name="user[password]" value=""></label>
       <label>Confrim Password <input class='password' type="password" name="user[confrimPassword]" value=""></label>
       <button class='signupButton' type="sumbit" name="button" disabled=true>Sign Up</button>
       <a href="/login">Already have an Account? Log in</a>
