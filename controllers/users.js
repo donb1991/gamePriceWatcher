@@ -19,6 +19,7 @@ app.get('/logout', routerHelper.ensureLoggedIn, function(req, res) {
 
 app.post('/signup', routerHelper.preventLoginSignup, function(req, res) {
   db.User.create(req.body.user, function(err, data) {
+    console.log(err);
     if (err) {
       console.log(err);
       res.redirect('/signup');

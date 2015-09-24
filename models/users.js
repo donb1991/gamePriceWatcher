@@ -10,12 +10,6 @@ var userSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  email: {
-    type: String,
-    lowercase: true,
-    required: true,
-    unique: true,
-  },
   password: {
     type: String,
     required: true,
@@ -52,7 +46,7 @@ userSchema.statics.authenticate = function(formData, next) {
   this.findOne({
     userName: formData.userName,
   }, function(err, user) {
-    if (err) {
+    if (err || !(user)) {
       next('Invaild username or password');
     } else {
       user.checkPassword(formData.password, next);
