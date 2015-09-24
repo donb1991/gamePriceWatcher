@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect( process.env.MONGOLAB_URI || 'mongodb://localhost/gamePriceWatcher');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/gamePriceWatcher');
 
 module.exports.User = require('./users');
 module.exports.Game = require('./games');
