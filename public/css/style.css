@@ -5,6 +5,7 @@
 header {
   background-color: #808080;
   border-bottom: 3px solid black;
+  margin-bottom: 50px;
 }
 
 nav {
@@ -12,7 +13,7 @@ nav {
 }
 
 nav a {
-  
+
 }
 
 .game {

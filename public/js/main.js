@@ -6,12 +6,17 @@ $(document).ready(function() {
   var $update = $('.update');
   var $delete = $('.delete');
   var $filterLink = $('.filterLink');
+  var $password = $('.password');
+  var $signup = $('.signup');
+
+  $('small').hide();
 
   $search.on('click', 'button', searchGames);
   $results.on('click', 'button', addToUsersList);
   $update.on('click', updateGamePrice);
   $delete.on('click', deleteGame);
   $filterLink.on('click', filter);
+  $signup.on('keyup', confrimPassword);
 
   function searchGames(e) {
     e.preventDefault();
@@ -151,38 +156,15 @@ $(document).ready(function() {
     }
   }
 
-  function updateData(e) {
-    e.preventDefault();
-
+  function confrimPassword(e) {
+    var $signupbutton = $('.signupButton');
+    var $userName = $('.userName');
+    if ($($password[0]).val() == $($password[1]).val() && ($($password[1]).val())) {
+      $signupbutton.attr('disabled', false);
+    } else if (($($userName).val())) {
+      $signupbutton.attr('disabled', false);
+    } else {
+      $signupbutton.attr('disabled', true);
+    }
   }
-
-  // $('a').on('click', function(e) {
-  //   e.preventDefault();
-  //   var url = 'http://localhost:3000' + $(e.target).attr('href');
-  //   $.ajax({
-  //     url: url,
-  //     method: 'GET',
-  //   }).done(function(data) {
-  //     console.log(data);
-  //     $content.html(data);
-  //   });
-  // });
-  //
-  // $('.login').on('click', 'button', function(e) {
-  //   e.preventDefault();
-  //   $form = $(e.target).closest('form');
-  //   console.log($form);
-  //   data = {
-  //     userName: $form.children('.userName').val(),
-  //     password: $form.children('.password').val(),
-  //   };
-  //   $.ajax({
-  //     url: 'http://localhost:3000/login',
-  //     method: 'GET',
-  //     data: data,
-  //   }).done(function(data) {
-  //     console.log(data);
-  //     $content.html(data);
-  //   });
-  // });
 });
