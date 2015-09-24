@@ -4,4 +4,4 @@ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/gamePriceWatch
 
 module.exports.User = require('./users');
 module.exports.Game = require('./games');
-module.exports.UserGame = require('./UserGames');
+module.exports.UserGame = require('./userGames');
