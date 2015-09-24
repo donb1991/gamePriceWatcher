@@ -84,7 +84,7 @@ $(document).ready(function() {
   function addHiddenGameData(game, $result) {
     var $img = $('<img class="coverArt columns large-2 vcenter" src="' + game.thumb + '" alt="' + game.title + ' Cover Art" />');
     var $div = $('<div class="columns large-5 vcenter"> </div>');
-    var $form = $result.children('form');
+    var $form = $result.find('form');
     $div.append('<span class="title">Title: ' + game.title + '</span><br />');
     $div.append('<span class="title">Retailer: ' + game.retailer + '</span> <br />');
     $div.append('<span class="title">Price: ' + game.price + '</span> <br />');
