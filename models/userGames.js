@@ -13,6 +13,12 @@ var userGameSchema = mongoose.Schema({
   userPrice: Number,
 });
 
+userGameSchema.pre('remove', function(next) {
+  db.User.findOneAndUpdate({games: {$in: [this._id]}}, {$pull: {games: this._id}}, function(err, user) {
+    next();
+  });
+});
+
 var UserGame = mongoose.model('UserGame', userGameSchema);
 
 module.exports = UserGame;

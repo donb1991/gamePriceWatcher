@@ -19,7 +19,7 @@ var updateHelper = function(req, res, next) {
           updatedGameInfo.thumb = jsonBody[usergame.game.gameId].info.thumb;
           jsonBody[usergame.game.gameId].deals.forEach(function(deal) {
             if (deal.price < loweistPrice) {
-              loweistPrice = deal.price;
+              loweistPrice = deal.salePrice;
               cheapistGame = deal;
             }
           });

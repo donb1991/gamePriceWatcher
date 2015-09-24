@@ -6,7 +6,7 @@
   </div>
   <div class="row gamelist">
     <% games.forEach(function(game) { %>
-      <% if (game.game.userPrice == null || game.game.userPrice == undefined || game.game.userPrice > game.game.price) { %>
+      <% if (game.userPrice == null || game.userPrice == undefined || game.userPrice > game.game.price) { %>
         <div class="game columns large-12">
           <% include ../partials/gamerow %>
         </div>

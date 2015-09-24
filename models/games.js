@@ -17,12 +17,6 @@ var gameSchema = mongoose.Schema({
 
 gameSchema.plugin(findOrCreate);
 
-// gameSchema.pre('remove', function(next) {
-//   db.User.findOneAndUpdate({games: {$in: [this._id]}}, {$pull: {games: this._id}}, function(err, user) {
-//     next();
-//   });
-// });
-
 var Game = mongoose.model('Game', gameSchema);
 
 module.exports = Game;

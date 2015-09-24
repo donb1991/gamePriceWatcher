@@ -2,12 +2,17 @@ var db = require('../models');
 var bcrypt = require('bcrypt');
 var routerHelper = require('../middleware/routerHelper');
 var updateHelper = require('../middleware/updateHelper');
+var randomGame = require('../middleware/randomgame');
 
-app.get('/signup', routerHelper.preventLoginSignup, function(req, res) {
+app.get('/signup', routerHelper.preventLoginSignup, randomGame.getRandomGame, function(req, res) {
   res.render('users/signup');
 });
 
-app.get('/login', routerHelper.preventLoginSignup, function(req, res) {
+app.get('/login', routerHelper.preventLoginSignup, randomGame.getRandomGame, function(req, res) {
+  // var game = {};
+  // req.randomGame(game);
+  // console.log(game);
+
   res.render('users/login');
 });
 
