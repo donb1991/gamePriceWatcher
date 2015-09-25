@@ -34,6 +34,7 @@ app.delete('/users/:userId/usergames/:id', function(req, res) {
 });
 
 app.put('/users/:userId/usergames/:id', function(req, res) {
+  console.log('hello');
   db.UserGame.findByIdAndUpdate(req.params.id, req.body, function(err, game) {
     if (err) {
       console.log(err);

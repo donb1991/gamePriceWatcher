@@ -8,20 +8,10 @@ header {
   margin-bottom: 50px;
 }
 
-.vcenter {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+
 
 nav {
   top: 50px;
-}
-
-nav a {
-
 }
 
 .game {
@@ -32,19 +22,35 @@ nav a {
 
 .randomGameInfo {
   text-align: left;
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   line-height: 3em;
   position: relative;
-}
-
-.login {
-  padding-top: 50px;
 }
 
 .signup {
   padding-top: 25px;
 }
 
-.gamelist {
-  border: 10px solid black;
+.jim {
+  border: 1px solid black;
+}
+
+.vcontainer {
+  position: relative;
+}
+
+.vcenter {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.homegame {
+  position: absolute;
+  top: 50%;
+  -webkit-tr  ansform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

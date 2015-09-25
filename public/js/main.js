@@ -8,8 +8,14 @@ $(document).ready(function() {
   var $filterLink = $('.filterLink');
   var $password = $('.password');
   var $signup = $('.signup');
+  var $gamelist = $('.gamelist .game');
 
   $('small').hide();
+
+  if ($gamelist.length === $('.filter').length) {
+    $('.message').show();
+    $('.filter').show();
+  }
 
   $search.on('click', 'button', searchGames);
   $results.on('click', 'button', addToUsersList);
@@ -103,7 +109,7 @@ $(document).ready(function() {
   function addToUsersList(e) {
     e.preventDefault();
     var userId = $results.attr('class').split(' ')[1];
-    $gameForm = ($(e.target).closest('form'));
+    $gameForm = $(e.target.form);
     data = {
       gameId:  $gameForm.find('.gameId').val(),
       title: $gameForm.find('.title').val(),
@@ -114,7 +120,7 @@ $(document).ready(function() {
       userPrice: $gameForm.find('.userPrice').val(),
     };
     $.ajax({
-      url: 'https://gamepricewatcher.herokuapp.com/users/' + userId + '/usergames',
+      url: window.location.href + '/usergames',
       method: 'POST',
       data: data,
     });
@@ -159,12 +165,12 @@ $(document).ready(function() {
   function confrimPassword(e) {
     var $signupbutton = $('.signupButton');
     var $userName = $('.userName');
-    if ($($password[0]).val() == $($password[1]).val() && ($($password[1]).val())) {
-      $signupbutton.attr('disabled', false);
-    } else if (($($userName).val())) {
-      $signupbutton.attr('disabled', false);
-    } else {
+    if ($($password[0]).val() != $($password[1]).val() && ($($password[1]).val())) {
       $signupbutton.attr('disabled', true);
+    } else if (!($($userName).val())) {
+      $signupbutton.attr('disabled', true);
+    } else {
+      $signupbutton.attr('disabled', false);
     }
   }
 });
