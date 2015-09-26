@@ -67,7 +67,7 @@ $(document).ready(function() {
         game.price = deal.gameInfo.salePrice;
         game.publisher = deal.gameInfo.publisher;
         $.ajax({
-          url:'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + game.title + ' Cover Art',
+          url:'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + game.title + ' Cover Art',
           method: 'GET',
           dataType: 'jsonp',
         }).done(function(data) {
