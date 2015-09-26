@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Game Watcher</title>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
     <script src="/js/main.js"></script>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css" />
@@ -14,15 +15,16 @@
     <header>
       <div class="container">
         <div class="row">
-          <h1 class="columns large-3">Logo</h1>
-          <nav class='columns large-4'>
+          <img class='columns small-2 logo' src="https://tse1.mm.bing.net/th?&id=JN.8C2e7IWXsX0Dy4/du7OKXQ&w=300&h=300&c=0&pid=1.9&rs=0&p=0&r=0" alt="" />
+          <h1 class="columns small-6">Game Watcher</h1>
+          <nav class='columns small-4'>
             <% if (locals.user != null) { %>
-              <a class="columns large-4" href="/users/<%= locals.user %>">Search</a>
-              <a class="columns large-4" href="/users/<%= locals.user %>/usergames">Your List</a>
-              <a class="columns large-4" href="/logout">Logout</a>
+              <a class="columns small-4" href="/users/<%= locals.user %>">Search</a>
+              <a class="columns small-4" href="/users/<%= locals.user %>/usergames">Your List</a>
+              <a class="columns small-4" href="/logout">Logout</a>
             <% } else { %>
-              <a class="columns large-6" href="/signup">Sign Up</a>
-              <a class="columns large-6" href="/login">Log In</a>
+              <a class="columns small-6" href="/signup">Sign Up</a>
+              <a class="columns small-6" href="/login">Log In</a>
             <% } %>
           </nav>
         </div>

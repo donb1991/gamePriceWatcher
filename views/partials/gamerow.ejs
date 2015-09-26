@@ -1,20 +1,20 @@
-<img class='coverArt columns large-4 vcenter'src="<%= game.game.thumb %>" alt="coverArt" />
-<div class="gameInfo columns large-4 vcenter">
+<img class='coverArt columns medium-4 show-for-medium-up vcenter'src="<%= game.game.thumb %>" alt="coverArt" />
+<div class="gameInfo columns medium-4 small-6 vcenter">
   <span class="title">Title: <%= game.game.title %></span> <br />
   <span class="retailer">Retailer: <%= game.game.retailer%></span> <br />
   <span class="price">Price: <%= game.game.price %></span> <br />
   <span class="publisher">Publisher: <%= game.game.publisher %></span> <br />
 </div>
-<div class="columns large-4 vcenter">
+<div class="columns medium-4 small-6 vcenter">
   <form class="<%=game._id%>" action="#" method="get">
     <div class="row collapse">
-      <div class="columns large-8">
+      <div class="columns small-8">
         <input class='userPrice' type="number" name="name" value="<%= game.userPrice %>">
       </div>
-      <div class="columns large-2">
+      <div class="columns small-2">
         <input class='update button postfix expand' type="button" name="button" value='edit' />
       </div>
-      <div class="columns large-2">
+      <div class="columns small-2">
         <input class='delete button postfix expand alert' type="button" name="button" value='X' />
       </div>
     </div>

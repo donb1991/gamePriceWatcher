@@ -14,11 +14,11 @@
     <div class="row gamelist">
       <% games.forEach(function(game) { %>
         <% if (game.userPrice == null || game.userPrice == undefined || game.userPrice > game.game.price) { %>
-          <div class="game columns large-12">
+          <div class="game columns small-12">
             <% include ../partials/gamerow %>
           </div>
         <% } else { %>
-          <div class="game columns large-12 filter" hidden>
+          <div class="game columns small-12 filter" hidden>
             <% include ../partials/gamerow %>
           </div>
         <% } %>

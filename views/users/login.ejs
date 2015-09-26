@@ -1,15 +1,15 @@
   <% include ../partials/header %>
 
-  <div class="row">
-    <h1 class="columns large-12">Best Deal</h1>
+  <div class="row show-for-medium-up">
+    <h1 class="columns medium-12">Best Deal</h1>
   </div>
   <div class='row'>
     <% include ../partials/randomGame %>
-    <form class='login columns large-5 vcenter' action="/login" method="post">
+    <form class='login columns medium-4' action="/login" method="post">
       <label>Username<input type="text" name="user[userName]" value=""></label>
       <label>Password <input type="password" name="user[password]" value=""></label>
       <button type="sumbit" name="button">Log In</button>
-      <a href="/signup">Don't have an account? Sign up</a>
+      <a class='smaller' href="/signup">Don't have an account? Sign up</a>
     </form>
   </div>
 

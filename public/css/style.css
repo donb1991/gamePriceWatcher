@@ -2,37 +2,51 @@
   max-height: 148px;
 }
 
+body {
+  background-color: #F7FAFA;
+}
+
 header {
-  background-color: #808080;
+  background-color: #FFFFFF;
   border-bottom: 3px solid black;
   margin-bottom: 50px;
 }
 
-
-
 nav {
-  top: 50px;
+  margin-top: 15px;
+}
+
+.logo {
+  min-height: 60px;
+  max-height: 75px;
 }
 
 .game {
   margin-bottom: 10px;
   height: 150px;
+}
+
+.gamelist{
   box-shadow: -1px 1px 10px black;
+  background-color: #FFFEFC;
+  margin-bottom: 10px;
+}
+
+.randomGame{
+  padding-top: 30px;
 }
 
 .randomGameInfo {
   text-align: left;
-  /*padding-top: 50px;*/
-  line-height: 3em;
-  position: relative;
+  padding-top: 20px;
 }
 
 .signup {
   padding-top: 25px;
 }
 
-.jim {
-  border: 1px solid black;
+.smaller {
+  font-size: .7em;
 }
 
 .vcontainer {
@@ -43,14 +57,6 @@ nav {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.homegame {
-  position: absolute;
-  top: 50%;
-  -webkit-tr  ansform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }

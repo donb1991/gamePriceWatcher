@@ -1,16 +1,16 @@
 <% include ../partials/header %>
 
-  <div class="row">
-    <h1 class="columns large-12">Best Deal</h1>
+  <div class="row show-for-medium-up">
+    <h1 class="columns medium-12 ">Best Deal</h1>
   </div>
   <div class="row">
     <% include ../partials/randomGame %>
-    <form class='signup columns right large-5'action="/signup" method="post">
+    <form class='signup columns right medium-4'action="/signup" method="post">
       <label class="userNameLabel">Username <input class='userName' type="text" name="user[userName]" value=""></label>
       <label class="passwordNameLabel">Password <input class='password' type="password" name="user[password]" value=""></label>
       <label>Confirm Password <input class='password' type="password" value=""></label>
       <button class='signupButton' type="sumbit" name="button" disabled=true>Sign Up</button>
-      <a href="/login">Already have an Account? Log in</a>
+      <a class='smaller' href="/login">Already have an Account? Log in</a>
     </form>
   </div>
 <% include ../partials/footer %>

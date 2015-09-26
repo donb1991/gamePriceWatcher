@@ -1,12 +1,14 @@
 
 
-<div class="randomGame columns large-7">
+<div class="randomGame columns medium-7 show-for-medium-up">
   <div class="row">
-    <img class='columns large-6 homegame'src="<%=locals.randomGame.thumb%>" alt="coverArt" />
-    <div class="randomGameInfo columns large-6">
-      <span class="title">Title: <%= randomGame.title %></span> <br />
-      <span class="retailer">Retailer: <%= randomGame.retailer %></span> <br />
-      <span class="price">Price: <%=randomGame.price %> </span> <br />
+    <img class='columns medium-6 homegame'src="<%=locals.randomGame.thumb%>" alt="coverArt" />
+    <div class="randomGameInfo columns medium-6">
+      <p>
+        Title: <%= randomGame.title %> <br />
+        Retailer: <%= randomGame.retailer %> <br />
+        Price: <%=randomGame.price %> <br />
+      </p>
     </div>
   </div>
 </div>
