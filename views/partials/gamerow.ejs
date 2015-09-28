@@ -3,14 +3,14 @@
 <div class="gameInfo columns medium-4 small-6 vcenter">
   <span class="title">Title: <%= game.game.title %></span> <br />
   <span class="retailer">Retailer: <%= game.game.retailer%></span> <br />
-  <span class="price">Price: <%= game.game.price %></span> <br />
+  <span class="price">Price: $<%= game.game.price %></span> <br />
   <span class="publisher">Publisher: <%= game.game.publisher %></span> <br />
 </div>
 <div class="columns medium-4 small-6 vcenter">
   <form class="<%=game._id%>" action="#" method="get">
     <div class="row collapse">
       <div class="columns small-8">
-        <input class='userPrice' type="number" name="name" value="<%= game.userPrice %>">
+        <input class='userPrice' type="number" name="userPrice" value="<%= game.userPrice %>" />
       </div>
       <div class="columns small-2">
         <input class='update button postfix expand' type="button" name="button" value='edit' />

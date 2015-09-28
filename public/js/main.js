@@ -119,7 +119,7 @@ $(document).ready(function() {
     $('<input class="title" type=hidden value="' + game.title + '"></input>').appendTo($form);
     $('<input class="gameId" type=hidden value="' + game.gameId + '"></input>').appendTo($form);
     $('<input class="retailer" type=hidden value="' + game.retailer + '"></input>').appendTo($form);
-    $('<input class="price" type=hidden value="' + game.price + '"></input>').appendTo($form);
+    $('<input class="price" type=hidden value="$' + game.price + '"></input>').appendTo($form);
     $('<input class="publisher" type=hidden value="' + game.publisher + '"></input>').appendTo($form);
     $('<input class="thumb" type=hidden value="' + game.thumb + '"></input>').appendTo($form);
     $form.find('button').attr('disabled', false);
