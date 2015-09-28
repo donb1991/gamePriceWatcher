@@ -136,7 +136,7 @@ $(document).ready(function() {
       price: $gameForm.find('.price').val(),
       publisher: $gameForm.find('.publisher').val(),
       thumb: $gameForm.find('.thumb').val(),
-      userPrice: $gameForm.find('.userPrice').val(),
+      userPrice: $gameForm.find('.userPrice').val().toFixed(2),
     };
     $.ajax({
       url: window.location.href + '/usergames',
@@ -155,7 +155,7 @@ $(document).ready(function() {
     $.ajax({
       url: url,
       method: 'PUT',
-      data: {userPrice: userPrice},
+      data: {userPrice: userPrice.toFixed(2)},
     }).done(function(data) {
       if (data.userPrice > userPrice) {
         $(e.target).closest('.game').addClass('filter');
