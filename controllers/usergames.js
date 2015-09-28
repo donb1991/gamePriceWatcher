@@ -12,9 +12,10 @@ app.post('/users/:userId/usergames', function(req, res) {
             db.UserGame.create({user: user._id, game: game._id, userPrice: req.body.userPrice}, function(err, usergame) {
               user.games.push(usergame);
               user.save();
-              res.send(user);
             });
           }
+
+          res.send(user);
         });
       });
     }
@@ -33,7 +34,6 @@ app.delete('/users/:userId/usergames/:id', function(req, res) {
 });
 
 app.put('/users/:userId/usergames/:id', function(req, res) {
-  console.log('hello');
   db.UserGame.findByIdAndUpdate(req.params.id, req.body, function(err, game) {
     if (err) {
       console.log(err);
