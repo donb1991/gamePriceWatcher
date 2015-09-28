@@ -22,7 +22,7 @@ app.post('/users/:userId/usergames', function(req, res) {
   });
 });
 
-app.delete('/users/:userId/usergames/:id', function(req, res) {
+app.delete('/users/:userId/usergames/:id', routerHelper.ensureCorrectUser, function(req, res) {
   db.UserGame.findByIdAndRemove(req.params.id, function(err, game) {
     if (err) {
       console.log(err);
