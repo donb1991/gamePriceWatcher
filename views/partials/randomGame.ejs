@@ -1,14 +1,16 @@
 
 
 <div class=" columns medium-7 show-for-medium-up vcenter">
-  <div class="row randomGame">
-    <img class='columns medium-6 homegame'src="<%=locals.randomGame.thumb%>" alt="coverArt" />
-    <div class="randomGameInfo columns medium-6">
-      <p>
-        Title: <%= randomGame.title %> <br />
-        Retailer: <%= randomGame.retailer %> <br />
-        Price: $<%=randomGame.price %> <br />
-      </p>
+  <a href="<%=randomGame.redirectLink%>" target='_blank'>
+    <div class="row randomGame">
+      <img class='columns medium-6 homegame'src="<%=locals.randomGame.thumb%>" alt="coverArt" />
+      <div class="randomGameInfo columns medium-6">
+        <p>
+          Title: <%= randomGame.title %> <br />
+          Retailer: <%= randomGame.retailer %> <br />
+          Price: $<%=randomGame.price %> <br />
+        </p>
+      </div>
     </div>
-  </div>
+  </a>
 </div>

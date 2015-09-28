@@ -72,7 +72,6 @@ $(document).ready(function() {
       $result.appendTo($column);
       $column.appendTo($row);
       $row.appendTo($results);
-
       $.ajax({
         url: 'https://www.cheapshark.com/api/1.0/deals?id=' + result.cheapestDealID,
         method: 'GET',
@@ -82,6 +81,7 @@ $(document).ready(function() {
         game.gameId = result.gameID;
         game.price = deal.gameInfo.salePrice;
         game.publisher = deal.gameInfo.publisher;
+        game.redirectLink = 'http://www.cheapshark.com/redirect.php?dealID=' + result.cheapestDealID;
         $.ajax({
           url:'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + game.title + ' Cover Art',
           method: 'GET',
@@ -112,13 +112,16 @@ $(document).ready(function() {
   function addHiddenGameData(game, $result) {
     var $img = $('<img class="coverArt columns medium-2 show-for-medium-up vcenter" src="' + game.thumb + '" alt="' + game.title + ' Cover Art" />');
     var $div = $('<div class="columns medium-5 small-6 vcenter"> </div>');
+    var $link = $('<a href=\'' + game.redirectLink + '\' target=\'_blank\'> </a>');
+    console.log($link);
     var $form = $result.find('form');
     $div.append('<span>Title: ' + game.title + '</span><br />');
     $div.append('<span>Retailer: ' + game.retailer + '</span> <br />');
     $div.append('<span>Price: $' + game.price + '</span> <br />');
     $div.append('<span>Publisher: ' + game.publisher + '</span> <br />');
-    $div.prependTo($result);
-    $img.prependTo($result);
+    $img.appendTo($link);
+    $div.appendTo($link);
+    $link.appendTo($result);
     $('<input class="title" type=hidden value="' + game.title + '"></input>').appendTo($form);
     $('<input class="gameId" type=hidden value="' + game.gameId + '"></input>').appendTo($form);
     $('<input class="retailer" type=hidden value="' + game.retailer + '"></input>').appendTo($form);

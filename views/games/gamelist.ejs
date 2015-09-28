@@ -14,13 +14,17 @@
     <div class="row gamelist">
       <% games.forEach(function(game) { %>
         <% if (game.userPrice == null || game.userPrice == undefined || game.userPrice > game.game.price) { %>
-          <div class="game columns small-12">
-            <% include ../partials/gamerow %>
-          </div>
+          <a href='<%=game.redirectLink%>' target='_blank'>
+            <div class="game columns small-12 filter" hidden>
+                <% include ../partials/gamerow %>
+            </div>
+          </a>
         <% } else { %>
-          <div class="game columns small-12 filter" hidden>
-            <% include ../partials/gamerow %>
-          </div>
+          <a href="<%=game.redirectLink%>">
+            <div class="game columns small-12 filter" hidden>
+                <% include ../partials/gamerow %>
+            </div>
+          </a>
         <% } %>
       <% }); %>
 

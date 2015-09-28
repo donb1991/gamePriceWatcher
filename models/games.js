@@ -13,6 +13,7 @@ var gameSchema = mongoose.Schema({
   retailer: String,
   price: Number,
   thumb: String,
+  redirectLink: String,
 });
 
 gameSchema.plugin(findOrCreate);
