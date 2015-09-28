@@ -60,7 +60,7 @@ userSchema.methods.checkPassword = function(password, next) {
     if (isMatch) {
       next(null, _this);
     } else {
-      next('No match', null);
+      next('Invaild username or password', null);
     }
   });
 };

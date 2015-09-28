@@ -6,6 +6,7 @@
   <div class="row signupRow">
     <% include ../partials/randomGame %>
     <form class='signup columns right medium-4 vcenter'action="/signup" method="post">
+      <span class='error'><%= locals.err %></span>
       <label class="userNameLabel">Username <input class='userName' type="text" name="user[userName]" value=""></label>
       <label class="passwordNameLabel">Password <input class='password' type="password" name="user[password]" value=""></label>
       <label>Confirm Password <input class='password' type="password" value=""></label>

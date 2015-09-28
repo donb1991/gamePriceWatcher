@@ -9,12 +9,18 @@ $(document).ready(function() {
   var $password = $('.password');
   var $signup = $('.signup');
   var $gamelist = $('.gamelist .game');
+  var $error = $('.error');
+  var $signupbutton = $('.signupButton');
 
-  $('small').hide();
+  $error.hide();
 
   if ($gamelist.length === $('.filter').length) {
     $('.message').show();
     $('.filter').show();
+  }
+
+  if ($error.text().length !== 0) {
+    $error.show();
   }
 
   $search.on('click', 'button', searchGames);
@@ -23,6 +29,7 @@ $(document).ready(function() {
   $delete.on('click', deleteGame);
   $filterLink.on('click', filter);
   $signup.on('keyup', confrimPassword);
+  $signupbutton.on('click', checkPassword);
 
   function searchGames(e) {
     e.preventDefault();
@@ -172,14 +179,17 @@ $(document).ready(function() {
     }
   }
 
+  function checkPassword(e) {
+    if ($($password[0]).val() != $($password[1]).val()) {
+      $error.text('Passwords do not match');
+      $error.show();
+      e.preventDefault();
+    }
+  }
+
   function confrimPassword(e) {
-    var $signupbutton = $('.signupButton');
     var $userName = $('.userName');
-    if ($($password[0]).val() != $($password[1]).val() && ($($password[1]).val())) {
-      $signupbutton.attr('disabled', true);
-    } else if (!($($userName).val())) {
-      $signupbutton.attr('disabled', true);
-    } else {
+    if ($($password[0]).val().length != 0 && $($password[1]).val().length != 0 && $userName.val().length != 0) {
       $signupbutton.attr('disabled', false);
     }
   }

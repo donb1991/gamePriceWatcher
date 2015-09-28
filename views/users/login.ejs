@@ -6,6 +6,7 @@
   <div class='row loginRow'>
     <% include ../partials/randomGame %>
     <form class='login columns medium-4 vcenter' action="/login" method="post">
+      <span class='error'><%= locals.err %></span>
       <label>Username<input type="text" name="user[userName]" value=""></label>
       <label>Password <input type="password" name="user[password]" value=""></label>
       <button type="sumbit" name="button">Log In</button>

@@ -17,11 +17,14 @@ app.get('/logout', routerHelper.ensureLoggedIn, function(req, res) {
   res.redirect('/login');
 });
 
-app.post('/signup', routerHelper.preventLoginSignup, function(req, res) {
+app.post('/signup', routerHelper.preventLoginSignup, randomGame.getRandomGame, function(req, res) {
   db.User.create(req.body.user, function(err, data) {
     if (err) {
-      console.log(err);
-      res.redirect('/signup');
+      if (err.code == 11000) {
+        res.locals.err = 'User name not available';
+      }
+
+      res.render('users/signup');
     } else {
       req.login(data);
       res.redirect('/');
@@ -29,11 +32,11 @@ app.post('/signup', routerHelper.preventLoginSignup, function(req, res) {
   });
 });
 
-app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
+app.post('/login', routerHelper.preventLoginSignup, randomGame.getRandomGame, function(req, res) {
   db.User.authenticate(req.body.user, function(err, user) {
     if (err) {
-      console.log(err);
-      res.redirect('/login');
+      res.locals.err = err;
+      res.render('users/login');
     } else {
       req.login(user);
       req.updateGames();

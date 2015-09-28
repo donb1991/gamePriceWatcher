@@ -46,11 +46,15 @@ header {
 
 .randomGame{
   padding-top: 30px;
+  height: 350px;
 }
 
 .randomGameInfo {
-  text-align: left;
-  padding-top: 20px;
+  position: relative;
+  top: 25%;
+  -webkit-transform: translateY(-25%);
+  -ms-transform: translateY(-25%);
+  transform: translateY(-25%);
 }
 
 .signup {
@@ -59,6 +63,10 @@ header {
 
 .signupRow, .loginRow {
   height: 295px;
+}
+
+.homegame {
+  max-height: 300px;
 }
 
 .smaller {
