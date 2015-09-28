@@ -33,18 +33,21 @@ $(document).ready(function() {
 
   function searchGames(e) {
     e.preventDefault();
-    $.ajax({
-      url: 'https://www.cheapshark.com/api/1.0/games?title=' + $('.search input').val() + '&limit=5',
-      method: 'GET',
-    }).done(function(data) {
-      if (data.length === 0) {
-        $error.text('No Results Found');
-        $error.show();
-      } else {
-        $error.hide();
-        renderResults(data);
-      }
-    });
+    if ($('.search input').val()) {
+      $.ajax({
+        url: 'https://www.cheapshark.com/api/1.0/games?title=' + $('.search input').val() + '&limit=5',
+        method: 'GET',
+      }).done(function(data) {
+        if (data.length === 0) {
+          $error.text('No Results Found');
+          $error.show();
+          $results.html('');
+        } else {
+          $error.hide();
+          renderResults(data);
+        }
+      });
+    }
   }
 
   function renderResults(results) {
@@ -110,16 +113,16 @@ $(document).ready(function() {
     var $img = $('<img class="coverArt columns medium-2 show-for-medium-up vcenter" src="' + game.thumb + '" alt="' + game.title + ' Cover Art" />');
     var $div = $('<div class="columns medium-5 small-6 vcenter"> </div>');
     var $form = $result.find('form');
-    $div.append('<span class="title">Title: ' + game.title + '</span><br />');
-    $div.append('<span class="title">Retailer: ' + game.retailer + '</span> <br />');
-    $div.append('<span class="title">Price: ' + game.price + '</span> <br />');
-    $div.append('<span class="title">Publisher: ' + game.publisher + '</span> <br />');
+    $div.append('<span>Title: ' + game.title + '</span><br />');
+    $div.append('<span>Retailer: ' + game.retailer + '</span> <br />');
+    $div.append('<span>Price: $' + game.price + '</span> <br />');
+    $div.append('<span>Publisher: ' + game.publisher + '</span> <br />');
     $div.prependTo($result);
     $img.prependTo($result);
     $('<input class="title" type=hidden value="' + game.title + '"></input>').appendTo($form);
     $('<input class="gameId" type=hidden value="' + game.gameId + '"></input>').appendTo($form);
     $('<input class="retailer" type=hidden value="' + game.retailer + '"></input>').appendTo($form);
-    $('<input class="price" type=hidden value="$' + game.price + '"></input>').appendTo($form);
+    $('<input class="price" type=hidden value="' + game.price + '"></input>').appendTo($form);
     $('<input class="publisher" type=hidden value="' + game.publisher + '"></input>').appendTo($form);
     $('<input class="thumb" type=hidden value="' + game.thumb + '"></input>').appendTo($form);
     $form.find('button').attr('disabled', false);
@@ -136,7 +139,7 @@ $(document).ready(function() {
       price: $gameForm.find('.price').val(),
       publisher: $gameForm.find('.publisher').val(),
       thumb: $gameForm.find('.thumb').val(),
-      userPrice: $gameForm.find('.userPrice').val().toFixed(2),
+      userPrice: $gameForm.find('.userPrice').val(),
     };
     $.ajax({
       url: window.location.href + '/usergames',
@@ -157,22 +160,25 @@ $(document).ready(function() {
       method: 'PUT',
       data: {userPrice: userPrice.toFixed(2)},
     }).done(function(data) {
+      var $displayPirce = $('<span class=\'small-12 smaller\'> The price has been updated</span>');
       if (data.userPrice > userPrice) {
         $(e.target).closest('.game').addClass('filter');
       } else {
         $(e.target).closest('.game').removeClass('filter');
       }
+
+      $(e.target).closest('form').after($displayPirce);
     });
   }
 
   function deleteGame(e) {
-
     url =  window.location.href + '/' + $(e.target.form).attr('class');
     $.ajax({
       url: url,
       method: 'delete',
     }).done(function(data) {
-      $(e.target).closest('.game').remove();
+      var thisGame = $(e.target).closest('.game');
+      thisGame.html('<span class=\'vcenter columns small-12\'>' + $(e.target).closest('.game').find('.title').text().slice(6) + ' has been removed from your list</span>');
     });
   }
 
