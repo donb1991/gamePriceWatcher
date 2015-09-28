@@ -13,7 +13,6 @@ app.post('/users/:userId/usergames', function(req, res) {
               user.games.push(usergame);
               user.save();
               res.send(user);
-              console.log(usergame);
             });
           }
         });

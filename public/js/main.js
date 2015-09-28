@@ -129,6 +129,9 @@ $(document).ready(function() {
       url: window.location.href + '/usergames',
       method: 'POST',
       data: data,
+    }).done(function() {
+      var $displayPirce = $('<span class=\'small-12 smaller\'> ' + data.title + ' has been added to your list for $' + data.userPrice + '</span>');
+      $gameForm.after($displayPirce);
     });
   }
 

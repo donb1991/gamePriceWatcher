@@ -35,7 +35,6 @@ app.post('/login', routerHelper.preventLoginSignup, function(req, res) {
       console.log(err);
       res.redirect('/login');
     } else {
-      console.log(err, user);
       req.login(user);
       req.updateGames();
       res.redirect('users/' + user._id + '/usergames');
