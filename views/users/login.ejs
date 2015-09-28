@@ -3,9 +3,9 @@
   <div class="row show-for-medium-up">
     <h1 class="columns medium-12">Best Deal</h1>
   </div>
-  <div class='row'>
+  <div class='row loginRow'>
     <% include ../partials/randomGame %>
-    <form class='login columns medium-4' action="/login" method="post">
+    <form class='login columns medium-4 vcenter' action="/login" method="post">
       <label>Username<input type="text" name="user[userName]" value=""></label>
       <label>Password <input type="password" name="user[password]" value=""></label>
       <button type="sumbit" name="button">Log In</button>

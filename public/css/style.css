@@ -2,6 +2,10 @@
   max-height: 148px;
 }
 
+.container {
+  padding: 5px;
+}
+
 body {
   background-color: #F7FAFA;
 }
@@ -9,11 +13,19 @@ body {
 header {
   background-color: #FFFFFF;
   border-bottom: 3px solid black;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
-nav {
-  margin-top: 15px;
+.navrow {
+  height: 75px;
+}
+
+.vbottom {
+  position: relative;
+  top: 100%;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
 }
 
 .logo {
@@ -22,7 +34,7 @@ nav {
 }
 
 .game {
-  margin-bottom: 10px;
+  margin: 10px 0;
   height: 150px;
 }
 
@@ -43,6 +55,10 @@ nav {
 
 .signup {
   padding-top: 25px;
+}
+
+.signupRow, .loginRow {
+  height: 295px;
 }
 
 .smaller {
