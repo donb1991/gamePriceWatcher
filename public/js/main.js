@@ -37,7 +37,13 @@ $(document).ready(function() {
       url: 'https://www.cheapshark.com/api/1.0/games?title=' + $('.search input').val() + '&limit=5',
       method: 'GET',
     }).done(function(data) {
-      renderResults(data);
+      if (data.length === 0) {
+        $error.text('No Results Found');
+        $error.show();
+      } else {
+        $error.hide();
+        renderResults(data);
+      }
     });
   }
 
