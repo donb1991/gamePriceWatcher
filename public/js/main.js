@@ -113,7 +113,6 @@ $(document).ready(function() {
     var $img = $('<img class="coverArt columns medium-2 show-for-medium-up vcenter" src="' + game.thumb + '" alt="' + game.title + ' Cover Art" />');
     var $div = $('<div class="columns medium-5 small-6 vcenter"> </div>');
     var $link = $('<a href=\'' + game.redirectLink + '\' target=\'_blank\'> </a>');
-    console.log($link);
     var $form = $result.find('form');
     $div.append('<span>Title: ' + game.title + '</span><br />');
     $div.append('<span>Retailer: ' + game.retailer + '</span> <br />');
