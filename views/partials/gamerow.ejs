@@ -1,12 +1,15 @@
-<img class='coverArt columns medium-2 show-for-medium-up vcenter'src="<%= game.game.thumb %>" alt="coverArt" />
-<div class="columns medium-1 show-for-medium-up">&nbsp;</div>
-<div class="gameInfo columns medium-4 small-6 vcenter">
-  <span class="title">Title: <%= game.game.title %></span> <br />
-  <span class="retailer">Retailer: <%= game.game.retailer%></span> <br />
-  <span class="price">Price: $<%= game.game.price %></span> <br />
-  <span class="publisher">Publisher: <%= game.game.publisher %></span> <br />
-</div>
-<div class="columns medium-4 small-6 vcenter">
+<a href="<%=game.redirectLink%> left">
+  <img class='coverArt columns medium-2 show-for-medium-up vcenter'src="<%= game.game.thumb %>" alt="coverArt" />
+  <div class="columns medium-1 show-for-medium-up">&nbsp;</div>
+  <div class="gameInfo columns medium-4 small-6 vcenter left">
+    <span class="title">Title: <%= game.game.title %></span> <br />
+    <span class="retailer">Retailer: <%= game.game.retailer%></span> <br />
+    <span class="price">Price: $<%= game.game.price %></span> <br />
+    <span class="publisher">Publisher: <%= game.game.publisher %></span> <br />
+  </div>
+</a>
+
+<div class="columns medium-4 small-6 vcenter right">
   <form class="<%=game._id%>" action="#" method="get">
     <div class="row collapse">
       <div class="columns small-8">
