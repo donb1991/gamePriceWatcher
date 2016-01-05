@@ -14,7 +14,6 @@
     "cookie-session": "^1.2.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "google-images": "^0.1.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.1.8",
     "mongoose-findorcreate": "^0.1.2",

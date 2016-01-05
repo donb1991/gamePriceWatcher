@@ -82,14 +82,8 @@ $(document).ready(function() {
         game.price = deal.gameInfo.salePrice;
         game.publisher = deal.gameInfo.publisher;
         game.redirectLink = 'http://www.cheapshark.com/redirect.php?dealID=' + result.cheapestDealID;
-        $.ajax({
-          url:'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + game.title + ' Cover Art',
-          method: 'GET',
-          dataType: 'jsonp',
-        }).done(function(data) {
-          game.thumb = data.responseData.results[0].unescapedUrl;
-          getRetailer(game, deal.gameInfo.storeID, $result);
-        });
+        game.thumb = deal.gameInfo.thumb;
+        getRetailer(game, deal.gameInfo.storeID, $result);
       });
     });
   }

@@ -8,5 +8,5 @@ require('./users');
 require('./usergames');
 
 app.get('*', function(req, res) {
-  res.send(404);
+  res.sendStatus(404);
 });
