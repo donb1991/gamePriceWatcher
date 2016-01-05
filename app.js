@@ -8,7 +8,6 @@ var mongoose = require('mongoose');
 var loginHelper = require('./middleware/loginHelper');
 var updateHelper = require('./middleware/updateHelper');
 var db = require('./models');
-var client = require('google-images');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
